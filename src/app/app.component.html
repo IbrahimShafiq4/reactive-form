@@ -1,0 +1,95 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <div formGroupName="userData">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" formControlName="username" class="form-control">
+            <!-- <span *ngIf="!signupForm.get('userData.username').valid && signupForm.get('userData.username').touched"
+              class="help-block text">Please Enter a Valid Username!</span> -->
+            <div *ngIf="signupForm.get('userData.username').touched && signupForm.get('userData.username').invalid">
+              <span *ngIf="signupForm.get('userData.username')?.getError('required')" class="text"> UserName Is Required
+              </span>
+              <span *ngIf="signupForm.get('userData.username')?.getError('minlength')" class="text"> MinLength Is Only 3
+                Letters </span>
+              <span *ngIf="signupForm.get('userData.username')?.errors['nameIsForbidden']" class="text">
+                username is forbidden
+                you can't use these names [ <span class="forbiddenName"
+                  *ngFor="let forbiddenName of forbiddenUsernames"> '{{ forbiddenName }}' </span> ]
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">email</label>
+            <input type="text" id="email" formControlName="email" class="form-control">
+
+            <span *ngIf="!signupForm.get('userData.email').valid && 
+                signupForm.get('userData.email').touched" class="help-text text">
+              please Enter a Valid Email!
+            </span>
+
+          </div>
+        </div>
+
+        <div class="radio" *ngFor="let gender of genders">
+          <label>
+            <input type="radio" formControlName="gender" [value]="gender">{{ gender }}
+          </label>
+        </div>
+
+        <div formArrayName="hobbies" class="hobbies">
+          <h4>Your Hobbies</h4>
+          <button class="btn btn-defualt" type="button" (click)="onAddHobby()">Add Hobby</button>
+          <div class="form-group" *ngFor="let hobbyControl of controls; 
+                    let i = index">
+
+            <div class="input-div">
+              <input type="text" class="form-control" [formControlName]="i">
+              <div (click)="onRemoveInput(i)">
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
+            <div *ngIf="signupForm.controls.hobbies.controls[i].touched 
+                  && signupForm.controls.hobbies.controls[i].invalid">
+              <p class="text" *ngIf="signupForm.get('hobbies')
+                .controls[i].getError('required')">This input is required</p>
+              <p class="text" *ngIf="signupForm.get('hobbies')
+                .controls[i].getError('minlength')">Minlength is 3</p>
+            </div>
+
+          </div>
+        </div>
+
+        <span *ngIf="!signupForm.valid && 
+          signupForm.touched" class="help-text text" style="display: block;">
+          please Enter a Valid Data!
+        </span>
+
+        <button class="btn btn-primary" type="submit" [disabled]="signupForm.invalid">Submit</button>
+      </form>
+      <hr>
+      <div class="row" *ngIf="submitted">
+        <div class="col-xs-12">
+          <h3>Your Data</h3>
+          <p class="user-details"> username: <span> {{ user.username }} </span> </p>
+          <p class="user-details"> Mail: <span>{{ user.email }}</span> </p>
+          <p class="user-details"> Gender: <span>{{ user.gender }}</span> </p>
+          <div class="hobbiesDiv">
+            <p class="user-details"> Your Hobbies:</p>
+            <ul>
+              <li *ngFor="let userHobby of user.hobbies">
+                <span>
+                  {{ userHobby }}
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,96 @@
+.container {
+  margin-top: 30px;
+}
+
+.text {
+  font-family: monospace;
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(255, 0, 0, 0.5);
+  text-shadow: 0px 0px 2px rgba(255, 0, 0, 0.5);
+  span {
+    color: #000;
+    text-shadow: none;
+  }
+  
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  box-shadow: 0px 0px 3px rgba(255, 0, 0, 0.3)
+}
+
+.hobbies button {
+  margin-block: 20px;
+  outline: none !important;
+}
+
+.input-div {
+  padding: 10px 20px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+
+  div {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    cursor: pointer;
+    span {
+      position: inherit;
+      width: 15px;
+      height: 3px;
+      background-color: #000;
+      transform: rotate(125deg);
+    
+      &:nth-child(2) {
+        transform: rotate(45deg)
+      }
+    }
+  }
+  
+}
+
+.forbiddenName {
+  color: #000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.user-details {
+  font-size: 25px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-block: 20px;
+  span {
+    font-family: monospace;
+    font-size: 20px;
+    font-weight: 600;
+    color: #ff8400;
+  }
+}
+
+.form-group {
+  margin-bottom: 0 !important;
+}
+
+.hobbiesDiv {
+  display: flex;
+  gap: 5px;
+  align-items: baseline;
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  span {
+    font-family: monospace;
+    font-size: 20px;
+    font-weight: 600;
+    color: #ff8400;
+  }
+}
