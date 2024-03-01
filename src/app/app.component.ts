@@ -211,7 +211,15 @@ export class AppComponent implements OnInit {
     this.user.email = this.signupForm.get('userData.email').value;
     this.user.gender = this.signupForm.get('gender').value;
     this.user.hobbies = this.signupForm.get('hobbies').value;
-    console.log(this.signupForm);
+    
+    this.signupForm.reset({
+      userData: {
+        username: '',
+        email: '',
+      },
+      gender: '',
+      hobbies: []
+    })
   }
 
   getControls() {
