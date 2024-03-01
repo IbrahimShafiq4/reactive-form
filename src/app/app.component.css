@@ -32,13 +32,16 @@ input.ng-invalid.ng-touched {
   justify-content: space-between;
   align-items: flex-start;
   position: relative;
+}
 
-  div {
+.input-div div {
     position: absolute;
     top: 15px;
     right: 10px;
     cursor: pointer;
-    span {
+}
+
+.input-div div span {
       position: inherit;
       width: 15px;
       height: 3px;
@@ -49,9 +52,6 @@ input.ng-invalid.ng-touched {
         transform: rotate(45deg)
       }
     }
-  }
-  
-}
 
 .forbiddenName {
   color: #000;
